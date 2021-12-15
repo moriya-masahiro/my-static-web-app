@@ -5,9 +5,13 @@ import { Product } from '../core';
   selector: 'app-demo-1',
   template: `
     <div class="upload">
-        <input type="file" accept="image/*" 
-            (change)="onChangeFileInput($event)">
-        <img [src]="imgSrc" alt="">
+        <div>
+            <input type="file" accept="image/*" 
+                (change)="onChangeFileInput($event)">
+        </div>
+        <div>
+            <img [src]="imgSrc" alt="">
+        </div>
     </div>
     `,
 })
