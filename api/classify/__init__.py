@@ -6,7 +6,7 @@ import azure.functions as func
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
-    the_file = request.FILES["upfile"]
+    the_file = req.FILES["upfile"]
 
     return func.HttpResponse(
              f"OK, your upload file name is {the_file.name}",
