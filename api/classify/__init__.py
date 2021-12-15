@@ -30,7 +30,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         #     shutil.copyfileobj(filestream.read(), f)
 
         # For CNN.
-        resnet18= models.resnet18(pretrained=True)
+        """resnet18= models.resnet18(pretrained=True)
 
         resnet18.cpu()
 
@@ -56,12 +56,18 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
         # /For CNN.
 
-        """return func.HttpResponse(
-                f"OK, your upload file name is {imagefile.filename}, image size is {image.size[0]}x{image.size[1]}"
-            )"""
+       
 
         return func.HttpResponse(
                 json.dumps({"class": idx})
+            )"""
+
+
+        return func.HttpResponse(
+            json.dumps({
+                "filename": imagefile.filename,
+                "width": image.size[0],
+                "hight": image.size[1]})
             )
 
     except Exception as e:
