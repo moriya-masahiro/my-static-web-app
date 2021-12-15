@@ -1,6 +1,7 @@
 import logging
 
 import azure.functions as func
+from PIL import Image
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -14,11 +15,21 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             pass
         else:
             name = req_body.get('name')
+    
+
 
     if name:
-        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully. HOGEHOGEHOGE!")
+        return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.")
     else:
+        red = Image.new('RGBA', (1, 1), (255, 0, 0, 0))
+        response = HttpResponse(content_type="image/jpeg")
+        red.save(response, "JPEG")
+        return response
+        
+        """
         return func.HttpResponse(
              "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.",
              status_code=200
         )
+        """
+        
