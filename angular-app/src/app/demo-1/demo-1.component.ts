@@ -50,13 +50,13 @@ export class Demo1Component implements OnInit {
       if (this.file == null){ return; }
 
       let data = new FormData();
-    data.append('upfile', this.file, this.file.name);
+      data.append('upfile', this.file, this.file.name);
 
-    // ［5］サーバーに送信
-    this.http.post('api/HttpTrigger1', data)
-      .subscribe(
-        data => console.log(data),
-        error => console.log(error)
-      );
+      // ［5］サーバーに送信
+      this.http.post('api/classify', data)
+        .subscribe(
+          data => console.log(data),
+          error => console.log(error)
+        );
     }
 }
