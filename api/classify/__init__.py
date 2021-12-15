@@ -27,9 +27,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         #     shutil.copyfileobj(filestream.read(), f)
 
         return func.HttpResponse(
-                body = f"OK, your upload file name is {imagefile.filename}",
-                headers = {"my-http-header": "some-value"},
-                status_code=200
+                f"OK, your upload file name is {imagefile.filename}"
             )
     except Exception as e:
         return func.HttpResponse(
