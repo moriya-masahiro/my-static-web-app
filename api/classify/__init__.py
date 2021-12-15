@@ -14,10 +14,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
                 status_code=200
             )
     except Exception as e:
-        func.HttpResponse(
-                str(e),
-                status_code=200
-            ) 
+        return func.HttpResponse(
+                    str(e),
+                    status_code=200
+                ) 
 
     """name = req.params.get('name')
     if not name:
