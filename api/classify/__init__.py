@@ -9,8 +9,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     try:
 
-        name = req.form['name']
-        interests =json.dumps(req.form["interests"], indent=2)
+        # name = req.form['name']
         imagefile = req.files["upfile"]
         filename = imagefile.filename
         filestream = imagefile.stream
