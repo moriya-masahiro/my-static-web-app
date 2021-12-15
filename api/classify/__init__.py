@@ -65,7 +65,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             )
 
     except Exception as e:
-        return func.HttpResponse(json.dumps(str(e))) 
+        return func.HttpResponse(json.dumps({"hogehoge": str(e)})) 
 
     """name = req.params.get('name')
     if not name:
