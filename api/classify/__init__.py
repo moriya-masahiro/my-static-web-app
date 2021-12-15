@@ -63,11 +63,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             )
 
     except Exception as e:
-        return func.HttpResponse(
-                    body = str(e),
-                    headers = {"my-http-header": "some-value"},
-                    status_code=200
-                ) 
+        return func.HttpResponse(str(e)) 
 
     """name = req.params.get('name')
     if not name:
