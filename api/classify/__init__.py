@@ -16,7 +16,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         filestream.seek(0)
 
         with open(filename, "wb") as f:
-            shutil.copyfileobj(filestream.raw, f)
+            shutil.copyfileobj(filestream.read(), f)
 
         return func.HttpResponse(
                 f"OK, your upload file name is {imagefile.name}",
