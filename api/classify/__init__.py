@@ -6,14 +6,18 @@ import azure.functions as func
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
-    the_file = req.FILES["upfile"]
+    try:
+        the_file = req.FILES["upfile"]
 
-    return func.HttpResponse(
-             f"OK, your upload file name is {the_file.name}",
-             status_code=200
-        )
-
-
+        return func.HttpResponse(
+                f"OK, your upload file name is {the_file.name}",
+                status_code=200
+            )
+    except Exception as e:
+        func.HttpResponse(
+                str(e),
+                status_code=200
+            ) 
 
     """name = req.params.get('name')
     if not name:
