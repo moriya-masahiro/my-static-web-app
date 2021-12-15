@@ -1,16 +1,26 @@
 import logging
 
 import azure.functions as func
-
+import json
+import shutil
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
     try:
-        the_file = req.FILES["upfile"]
+
+        name = req.form['name']
+        interests =json.dumps(req.form["interests"], indent=2)
+        imagefile = req.files["upfile"]
+        filename = imagefile.filename
+        filestream = imagefile.stream
+        filestream.seek(0)
+
+        with open(filename, wb) as f:
+            shutil.copyfileobj(filestream.raw, f)
 
         return func.HttpResponse(
-                f"OK, your upload file name is {the_file.name}",
+                f"OK, your upload file name is {imagefile.name}",
                 headers = {"my-http-header": "some-value"},
                 status_code=200
             )
