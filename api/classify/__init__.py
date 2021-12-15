@@ -32,6 +32,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         # For CNN.
         resnet18= models.resnet18(pretrained=True)
 
+        resnet18.cpu()
+
         preprocess = transforms.Compose([
             transforms.Resize(224),
             transforms.CenterCrop(224),
@@ -59,11 +61,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             )"""
 
         return func.HttpResponse(
-                f"The detected class is [{idx}]!"
+                json.dumps(f"The detected class is [{idx}]!")
             )
 
     except Exception as e:
-        return func.HttpResponse(str(e)) 
+        return func.HttpResponse(json.dumps(str(e))) 
 
     """name = req.params.get('name')
     if not name:
