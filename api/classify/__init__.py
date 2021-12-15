@@ -61,7 +61,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             )"""
 
         return func.HttpResponse(
-                json.dumps(f"The detected class is [{idx}]!")
+                json.dumps({"class": idx})
             )
 
     except Exception as e:
