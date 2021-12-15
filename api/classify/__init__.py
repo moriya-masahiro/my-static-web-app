@@ -3,6 +3,7 @@ import logging
 import azure.functions as func
 import json
 import shutil
+from PIL import Image
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
@@ -11,15 +12,22 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
         # name = req.form['name']
         imagefile = req.files["upfile"]
-        filename = imagefile.filename
-        filestream = imagefile.stream
-        filestream.seek(0)
+        # filename = imagefile.filename
+        # filestream = imagefile.stream
+        # filestream.seek(0)
 
-        with open(filename, "wb") as f:
-            shutil.copyfileobj(filestream.read(), f)
+        image = Image.open(imagefile)
+        # imgByteIO = io.BytesIO()
+        # image.save(imgByteIO, format=image.format)
+        # imgByteArr = imgByteIO.getvalue()
+
+        image.save(imagefile.filename)
+
+        # with open(filename, "wb") as f:
+        #     shutil.copyfileobj(filestream.read(), f)
 
         return func.HttpResponse(
-                f"OK, your upload file name is {imagefile.name}",
+                f"OK, your upload file name is {imagefile.filename}",
                 headers = {"my-http-header": "some-value"},
                 status_code=200
             )
