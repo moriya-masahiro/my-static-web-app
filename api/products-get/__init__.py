@@ -22,7 +22,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(f"Hello, {name}. This HTTP triggered function executed successfully.")
     else:
         red = Image.new('RGBA', (255, 255), (255, 0, 0, 0))
-        response = HttpResponse(content_type="image/jpeg")
+        response = func.HttpResponse(content_type="image/jpeg")
         red.save(response, "JPEG")
         return response
 
