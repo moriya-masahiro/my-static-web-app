@@ -5,6 +5,9 @@ import json
 import shutil
 from PIL import Image
 
+import torch
+from torchvision import models, transforms
+
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
@@ -26,9 +29,39 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         # with open(filename, "wb") as f:
         #     shutil.copyfileobj(filestream.read(), f)
 
-        return func.HttpResponse(
-                f"OK, your upload file name is {imagefile.filename}"
+        # For CNN.
+        resnet18= models.resnet18(pretrained=True)
+
+        preprocess = transforms.Compose([
+            transforms.Resize(224),
+            transforms.CenterCrop(224),
+            transforms.ToTensor(),
+            transforms.Normalize(
+                mean=[0.485, 0.456, 0.406],
+                std=[0.229, 0.224, 0.225]
             )
+        ])
+
+        img = preprocess(image)
+
+        img_batch = img[None]
+
+        resnet18.eval()
+
+        result = resnet18(img_batch)
+
+        idx = torch.argmax(result[0])
+
+        # /For CNN.
+
+        """return func.HttpResponse(
+                f"OK, your upload file name is {imagefile.filename}, image size is {image.size[0]}x{image.size[1]}"
+            )"""
+
+        return func.HttpResponse(
+                f"The detected class is [{idx}]!"
+            )
+
     except Exception as e:
         return func.HttpResponse(
                     body = str(e),
