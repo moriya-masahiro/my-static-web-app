@@ -15,7 +15,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         filestream = imagefile.stream
         filestream.seek(0)
 
-        with open(filename, wb) as f:
+        with open(filename, "wb") as f:
             shutil.copyfileobj(filestream.raw, f)
 
         return func.HttpResponse(
