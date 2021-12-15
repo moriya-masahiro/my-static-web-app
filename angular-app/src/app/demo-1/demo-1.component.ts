@@ -11,6 +11,7 @@ import { Product } from '../core';
         </div>
         <div>
             <img [src]="imgSrc" alt="" width="50%">
+            <p width="50%">"hogehoge \n fugafuga \n foofoo"</p>
         </div>
     </div>
     `,
