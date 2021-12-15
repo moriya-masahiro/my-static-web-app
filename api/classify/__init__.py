@@ -5,8 +5,8 @@ import json
 import shutil
 from PIL import Image
 
-import torch
-from torchvision import models, transforms
+# import torch
+# from torchvision import models, transforms
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
