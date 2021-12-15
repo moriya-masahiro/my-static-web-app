@@ -10,7 +10,7 @@ import { Product } from '../core';
                 (change)="onChangeFileInput($event)">
         </div>
         <div>
-            <img [src]="imgSrc" alt="" width="500%">
+            <img [src]="imgSrc" alt="" width="50%">
         </div>
     </div>
     `,
