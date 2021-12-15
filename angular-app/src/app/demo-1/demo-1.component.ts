@@ -10,8 +10,8 @@ import { Product } from '../core';
                 (change)="onChangeFileInput($event)">
         </div>
         <div>
-            <img [src]="imgSrc" alt="" width="50%">
-            <p width="50%">"hogehoge \n fugafuga \n foofoo"</p>
+            <img [src]="imgSrc" alt="" width="50%" align="left">
+            <p width="50%">hogehoge <br>fugafuga <br>foofoo</p>
         </div>
     </div>
     `,
