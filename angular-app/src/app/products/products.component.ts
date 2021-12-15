@@ -16,15 +16,19 @@ import { ProductService } from './product.service';
           <app-product-list [products]="products"></app-product-list>
         </div>
       </div>
-      <div class="new field">
+    </div>
+
+    <div class="demonstration 1">
+      <app-list-header
+        title="デモ1"
+        (refresh)="getProducts()"
+      ></app-list-header>
+      <div class="columns is-multiline is-variable">
         <div class="column is-8" *ngIf="products$ | async as products">
           <app-product-list [products]="products"></app-product-list>
         </div>
       </div>
-      <div class="hoge">
-        <p>hogehoge</p>
-      </div>
-      <div>
+    </div>
   `,
 })
 export class ProductsComponent implements OnInit {
