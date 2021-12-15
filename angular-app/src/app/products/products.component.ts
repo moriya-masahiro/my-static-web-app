@@ -23,9 +23,7 @@ import { ProductService } from './product.service';
         title="デモ1"
       ></app-list-header>
       <div class="columns is-multiline is-variable">
-        <div class="column is-8" *ngIf="products$ | async as products">
-          <app-demo-1 [products]="products"></app-demo-1>
-        </div>
+        <app-demo-1></app-demo-1>
       </div>
     </div>
   `,
