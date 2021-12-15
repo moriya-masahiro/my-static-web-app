@@ -16,7 +16,10 @@ import { ProductService } from './product.service';
           <app-product-list [products]="products"></app-product-list>
         </div>
       </div>
-    </div>
+      <div class="hoge">
+        <p>hogehoge</p>
+      </div>
+      <div>
   `,
 })
 export class ProductsComponent implements OnInit {
