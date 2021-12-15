@@ -4,23 +4,10 @@ import { Product } from '../core';
 @Component({
   selector: 'app-demo-1',
   template: `
-    <div *ngIf="!products?.length">
-      Loading data ...
-    </div>
-    <ul class="list">
-      <li
-        role="presentation"
-        *ngFor="let product of products; trackBy: trackByProduct; let i = index"
-      >
-        <div class="card">
-          <app-card-content
-            [name]="product.name"
-            [description]="product.description"
-          ></app-card-content>
-        </div>
-      </li>
-    </ul>
-  `,
+    <!--イベントハンドラーを登録-->
+    <input type="button" value="現在時刻" (click)="onclick()" />
+    <div>{{result}}</div>
+    `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Demo1Component {
@@ -29,4 +16,12 @@ export class Demo1Component {
   trackByProduct(index: number, product: Product): number {
     return product.id;
   }
+
+   // 変数resultを初期化
+   result = '現在時刻は不明です。';
+
+   // ボタンクリック時に現在時刻を表示
+   onclick() {
+     this.result = `現在時刻は、${new Date().toLocaleTimeString()}です。`;
+   }
 }
