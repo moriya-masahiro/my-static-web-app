@@ -11,11 +11,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
         return func.HttpResponse(
                 f"OK, your upload file name is {the_file.name}",
+                headers = {"my-http-header": "some-value"},
                 status_code=200
             )
     except Exception as e:
         return func.HttpResponse(
                     str(e),
+                    headers = {"my-http-header": "some-value"},
                     status_code=200
                 ) 
 
