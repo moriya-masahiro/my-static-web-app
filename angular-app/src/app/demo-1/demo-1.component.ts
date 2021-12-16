@@ -11,18 +11,19 @@ import { Product } from '../core';
                 (change)="onChangeFileInput($event)">
         </div>
         <div>
-            <img [src]="imgSrc" alt="" width="50%" align="left">
-            <p width="50%">hogehoge <br>fugafuga <br>foofoo</p>
+            <img [src]="imgSrc" alt="" width="50%">
         </div>
         <div>
           <button mat-button (click)="onclick()">推論</button>
         </div>
+        <div>{{result}}</div>
     </div>
     `,
 })
 export class Demo1Component implements OnInit {
     file: File = null;
     imgSrc: string | ArrayBuffer = "";
+    result = "";
   
     constructor( private http: HttpClient ) { }
   
@@ -52,11 +53,16 @@ export class Demo1Component implements OnInit {
       let data = new FormData();
       data.append('upfile', this.file, this.file.name);
 
+      this.result = "acoustic_guitar";
+      
+
       // ［5］サーバーに送信
       this.http.post('api/classify', data)
         .subscribe(
           data => console.log(data),
           error => console.log(error)
         );
+
+
     }
 }
