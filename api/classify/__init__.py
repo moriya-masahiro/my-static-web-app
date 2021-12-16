@@ -19,7 +19,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         # filestream = imagefile.stream
         # filestream.seek(0)
 
-        image = Image.open(imagefile)
+        image = Image.open(imagefile).convert('RGB')
         # imgByteIO = io.BytesIO()
         # image.save(imgByteIO, format=image.format)
         # imgByteArr = imgByteIO.getvalue()
@@ -61,6 +61,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(
                 json.dumps({"class": idx})
             )"""
+
+        # hoge
 
 
         return func.HttpResponse(
