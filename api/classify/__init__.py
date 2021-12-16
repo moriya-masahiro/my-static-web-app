@@ -64,13 +64,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
         # hoge
 
-
         return func.HttpResponse(
             json.dumps({
                 "filename": imagefile.filename,
                 "width": image.size[0],
-                "hight": image.size[1]})
+                "hight": image.size[1],
+                "class_name": "acoustic_guitar"})
             )
+
 
     except Exception as e:
         return func.HttpResponse(json.dumps({"hogehoge": str(e)})) 
