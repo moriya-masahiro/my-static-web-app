@@ -53,8 +53,8 @@ export class Demo1Component implements OnInit {
       let data = new FormData();
       data.append('upfile', this.file, this.file.name);
 
-      this.result = "acoustic_guitar";
       
+  
 
       // ［5］サーバーに送信
       this.http.post('api/classify', data)
@@ -63,6 +63,8 @@ export class Demo1Component implements OnInit {
           error => console.log(error)
         );
 
-
+      this.result = "acoustic_guitar";
+      
+        
     }
 }
