@@ -5,5 +5,4 @@
 azure-functions
 Pillow
 numpy
--f https://download.pytorch.org/whl/torch_stable.html
-torchvision==0.6.0+cpu
+onnxruntime
